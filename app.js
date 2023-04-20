@@ -1,5 +1,8 @@
 //jshint esversion:6
 
+//youtube code
+require('dotenv').config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
@@ -24,10 +27,10 @@ main().catch(err => console.log(err));
 
 
 async function main() {
-
+  //this is for atlas. cloud based
   mongoose.connect("mongodb+srv://admin-samhitha:SumaSuresh_123@cluster0.nveltys.mongodb.net/todolistDB");
 
-  // this is coorect code.
+  // this is coorect code. But for local
   // await mongoose.connect('mongodb://0.0.0.0:27017/todolistDB', { useNewUrlParser: true});
 
   console.log("Connected");
@@ -179,6 +182,10 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(3000, function() {
+//youtube code
+const PORT = process.env.PORT||3000;
+
+//youtube code makes it PORT. remove for 3000
+app.listen(PORT, function() {
   console.log("Server started on port 3000");
 });
